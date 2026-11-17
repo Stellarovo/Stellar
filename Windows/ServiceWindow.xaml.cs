@@ -200,7 +200,7 @@ namespace StellarWatch
             if (!loaded) return;
             if (int.TryParse(OverlayScale.Text.Trim(), out var percent))
             {
-                percent = Math.Clamp(percent, 1, 100);
+                percent = Math.Clamp(percent, 0, 100);
                 Config.Instance.Settings.Overlay_ScalePercent = percent;
                 OverlayScale.Text = Config.Instance.Settings.Overlay_ScalePercent.ToString();
                 Config.Save();

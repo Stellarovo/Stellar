@@ -60,62 +60,15 @@ namespace StellarWatch
 
             Config.Load();
 
-            login.Text = string.IsNullOrWhiteSpace(Config.Instance.Username) ? "Click Login..." : Config.Instance.Username;
-            login.GotFocus += (e, a) => login.Text = login.Text == "Click Login..." ? string.Empty : login.Text;
-            login.LostFocus += (e, a) => login.Text = string.IsNullOrEmpty(login.Text) ? "Click Login..." : login.Text;
-
-            password.Password = string.IsNullOrWhiteSpace(Config.Instance.Password) ? "" : Config.Instance.Password;
-            passwordWatermark.Visibility = string.IsNullOrWhiteSpace(password.Password) ? Visibility.Visible : Visibility.Hidden;
-            password.GotFocus += (e, a) => passwordWatermark.Visibility = Visibility.Hidden;
-            password.LostFocus += (e, a) => passwordWatermark.Visibility = string.IsNullOrWhiteSpace(password.Password) ? Visibility.Visible : Visibility.Hidden;
-
-            key.GotFocus += (e, a) => keyWatermark.Visibility = Visibility.Hidden;
-            key.LostFocus += (e, a) => keyWatermark.Visibility = string.IsNullOrWhiteSpace(key.Password) ? Visibility.Visible : Visibility.Hidden;
-
             Checker = new IdentityChecker();
-            LoginButton.IsEnabled = false;
 
             Loaded += StartupProgressBar_Loaded;
         }
 
-        private async void StartupProgressBar_Loaded(object sender, RoutedEventArgs e)
+        private void StartupProgressBar_Loaded(object sender, RoutedEventArgs e)
         {
-            Instance.Dispatcher.Invoke(() => TaskDescription.Content = "Connecting");
-
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.DoWork += async (s, e) =>
-            {
-         
-
-                Instance.Dispatcher.Invoke(() =>
-                {
-                    if (Instance.login.Text != "Click Login..." && !string.IsNullOrWhiteSpace(Instance.password.Password))
-                    {
-                        TaskDescription.Content = "Logging in from config";
-                        var l = Instance.login.Text.Trim();
-                        var p = Instance.password.Password.Trim();
-                        BackgroundWorker worker2 = new BackgroundWorker();
-                        worker2.DoWork += async (s, e) =>
-                        {
-                            //     Checker.AuthApp.login(l, p);
-                            Instance.Dispatcher.Invoke(() =>
-                            {
-                               
-                                start ??= Start();
-                            
-                            });
-                        };
-                        worker2.RunWorkerAsync();
-                    }
-                    else
-                    {
-                        LoginButton.IsEnabled = true;
-                        TaskDescription.Content = "Welcome to Stellar";
-                    }
-                });
-            };
-
-            worker.RunWorkerAsync();
+            TaskDescription.Content = "Connecting";
+            start ??= Start();
         }
 
         public static Task start;
@@ -206,7 +159,7 @@ namespace StellarWatch
                         return;
                     }
 
-                    Instance.Dispatcher.Invoke(() => TaskDescription.Content = $"welcome {Checker.Name}");
+                    Instance.Dispatcher.Invoke(() => TaskDescription.Content = $"welcome to {Checker.Name}");
                     await Task.Delay(1250);
 
                     if (Checker.Type != IdentityChecker.AccessType.Debug)

@@ -163,7 +163,7 @@ namespace StellarWatch.Windows
                 if (ratio > ratio_base) xoffset += (win_w - win_h * ratio_base) / 2;
                 if (ratio < ratio_base) yoffset += (win_h - win_w / ratio_base) / 2;
                 
-                var scalePercent = 1d + (Math.Clamp(Config.Instance.Settings.Overlay_ScalePercent, 1, 100) - 1) * 0.01d;
+                var scalePercent = 1d + (Math.Clamp(Config.Instance.Settings.Overlay_ScalePercent, 0, 100) - 1) * 0.01d;
 
                 // 345 200
                 Width = ((win_w - xoffset * 2) / 4) * scalePercent;

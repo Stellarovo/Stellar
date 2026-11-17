@@ -77,7 +77,7 @@ namespace StellarWatch
         public void CheckSubs()
         {
             
-            Name = "lvl 1 api NOOB";
+            Name = "Stellar";
             Type = AccessType.Debug;
             
         }

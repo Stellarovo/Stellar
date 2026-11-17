@@ -28,18 +28,12 @@
 
                 <!--Task Description-->
                 <Label Name="TaskDescription"
-                       Content="Click Login..." 
+                       Content="Starting Stellar..." 
                        Margin="34,0,0,0"
                        HorizontalAlignment="Left" VerticalAlignment="Top"
-                       Width="250" Height="30" Foreground="White" 
-                       FontFamily="{StaticResource TitleFont}" FontSize="18"/>
-
-                <controls:WindowControlButton HorizontalAlignment="Right"
-                    Height="22" PathData="{StaticResource CloseIcon}" 
-                    Click="ExitButtonClick" Scale="0.95" MaxScale="1.0"
-                    Margin="0,0,8,0"
-                    FillColor="{StaticResource InactiveColor}" GlowColor="#d93732"/>
-            </Grid>
+                                   Width="250" Height="30" Foreground="White" 
+                                   FontFamily="{StaticResource TitleFont}" FontSize="18"/>
+                       </Grid>
 
 
 
@@ -56,7 +50,7 @@
                 </Grid>
             </Border>
 
-            <Border x:Name="LoginBorder" CornerRadius="8" Margin="10,0,10,10" Visibility="Visible"
+            <Border x:Name="LoginBorder" CornerRadius="8" Margin="10,0,10,10" Visibility="Collapsed"
                     Background="{StaticResource LightBackColor}">
 
                 <Border.LayoutTransform>

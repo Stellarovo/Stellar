@@ -140,7 +140,7 @@
                     </Grid>
 
                     <Grid Height="28">
-                        <Label Content="覆盖层调整大小"/>
+                        <Label Content="覆盖层大小"/>
                         <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
                             <TextBox x:Name="OverlayScale" MaxLength="4" MaxLines="1"
                                      TextChanged="OverlayScale_TextChanged"/>
