@@ -274,22 +274,22 @@ namespace StellarWatch
             Pin.FillColor = Topmost ? Pin.GlowColor : (SolidColorBrush)Application.Current.FindResource("InactiveColor");
         }
 
-        OverlayWindow _overWin;
-
         private void OverlayClick(object sender, RoutedEventArgs e)
         {
-            if (_overWin == null)
+            if (overlay == null)
             {
-                _overWin = new OverlayWindow();
-                _overWin.Show();   
+                overlay = new OverlayWindow();
+                OverlayWindow.CheckGameFocus(true);
+                overlay.TryFollowWindow();
+                overlay.Show();
             }
             else
             {
-                _overWin.Close();
-                _overWin = null;
+                overlay.Close();
+                overlay = null;
             }
 
-            Overlay.FillColor = _overWin != null ? Pin.GlowColor : (SolidColorBrush)Application.Current.FindResource("InactiveColor");
+            Overlay.FillColor = overlay != null ? Pin.GlowColor : (SolidColorBrush)Application.Current.FindResource("InactiveColor");
         }
 
         private void CurrentModuleToggle(object sender, RoutedEventArgs e)

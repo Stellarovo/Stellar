@@ -139,14 +139,18 @@
                         </StackPanel>
                     </Grid>
 
-                    <Grid>
-                        <controls:Checkbox x:Name="OverlayStartup" Click="OverlayStartup_Click"/>
-                        <Label Content="自动显示覆盖层"/>
+                    <Grid Height="28">
+                        <Label Content="覆盖层调整大小"/>
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
+                            <TextBox x:Name="OverlayScale" MaxLength="4" MaxLines="1"
+                                     TextChanged="OverlayScale_TextChanged"/>
+                            <Label Content="%" FontFamily="{StaticResource Kantumruy}" Padding="6,1,6,0"/>
+                        </StackPanel>
                     </Grid>
 
                     <Grid>
-                        <controls:Checkbox x:Name="OverlayActive" Click="OverlayActive_Click"/>
-                        <Label Content="不操作时隐藏覆盖层"/>
+                        <controls:Checkbox x:Name="OverlayStartup" Click="OverlayStartup_Click"/>
+                        <Label Content="自动显示覆盖层"/>
                     </Grid>
 
                     <Grid>

@@ -70,7 +70,6 @@ namespace StellarWatch
             //DB_MaxAge.Text = Config.Instance.Settings.DB_HoursMaxAge.ToString();
 
             KeybindsSuppress.SetState(Config.Instance.Settings.AltTabSupressKeybinds);
-            OverlayActive.SetState(Config.Instance.Settings.Overlay_DisableOnInactivity);
             OverlayStartup.SetState(Config.Instance.Settings.Overlay_StartOnLaunch);
             ShowTime.SetState(Config.Instance.Settings.Overlay_ShowTime);
             ShowTimer.SetState(Config.Instance.Settings.Overlay_ShowTimer);
@@ -79,6 +78,7 @@ namespace StellarWatch
             CountDungeons.SetState(Config.Instance.Settings.Tracker_CountDungeons);
             OverlayX.Text = Config.Instance.Settings.Overlay_LeftOffset.ToString();
             OverlayY.Text = Config.Instance.Settings.Overlay_BottomOffset.ToString();
+            OverlayScale.Text = Config.Instance.Settings.Overlay_ScalePercent.ToString();
             BungieName.Text = Config.Instance.Settings.Tracker_BungieName ?? "Name#0000";
             BungieName.Foreground = Application.Current.Resources[Config.Instance.Settings.Tracker_BungieName is not null ? "AccentColor" : "InactiveColor"] as SolidColorBrush;
             
@@ -190,6 +190,19 @@ namespace StellarWatch
             {
                 Config.Instance.Settings.Overlay_BottomOffset = px;
                 OverlayY.Text = Config.Instance.Settings.Overlay_BottomOffset.ToString();
+                Config.Save();
+                MainWindow.Instance.overlay?.TryFollowWindow();
+            }
+        }
+
+        private void OverlayScale_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!loaded) return;
+            if (int.TryParse(OverlayScale.Text.Trim(), out var percent))
+            {
+                percent = Math.Clamp(percent, 1, 100);
+                Config.Instance.Settings.Overlay_ScalePercent = percent;
+                OverlayScale.Text = Config.Instance.Settings.Overlay_ScalePercent.ToString();
                 Config.Save();
                 MainWindow.Instance.overlay?.TryFollowWindow();
             }
@@ -314,12 +327,6 @@ namespace StellarWatch
                     BungieName.IsEnabled = FindButton.IsEnabled = true;
                 });
             });
-        }
-
-        private void OverlayActive_Click(object sender, RoutedEventArgs e)
-        {
-            Config.Instance.Settings.Overlay_DisableOnInactivity = OverlayActive.Checked;
-            Config.Save();
         }
 
         private void OverlayTogglable_Click(object sender, RoutedEventArgs e)

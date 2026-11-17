@@ -83,7 +83,7 @@
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="{StaticResource ModuleBrush}"/>
                                 <Setter Property="MinOpacity" Value="1.0"/>
-                                <Setter Property="Scale" Value="0.74"/>
+                                <Setter Property="Scale" Value="0.70"/>
                             </Style>
                         </StackPanel.Resources>
                     </StackPanel>

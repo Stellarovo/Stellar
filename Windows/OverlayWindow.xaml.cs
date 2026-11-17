@@ -72,6 +72,7 @@ namespace StellarWatch.Windows
         public OverlayWindow()
         {
             InitializeComponent();
+            Visibility = Visibility.Collapsed;
             provider = InterceptionManager.GetProvider("Xbox") as XboxProvider;
             Topmost = true;
             timer = new DispatcherTimer();
@@ -89,15 +90,11 @@ namespace StellarWatch.Windows
                 timer.Interval = TimeSpan.FromSeconds(1);
                 return;
             }
-            // 1 3/3, 2 2/3
-            if (Config.Instance.Settings.Overlay_DisableOnInactivity)
+            if (!TryFollowWindow())
             {
-                var dur = provider.InstanceDuration();
-                if (dur == TimeSpan.Zero)
-                {
-                    this.ElementFadeOut();
-                    return;
-                }
+                Visibility = Visibility.Collapsed;
+                timer.Interval = TimeSpan.FromSeconds(1);
+                return;
             }
 
             CheckModules();
@@ -105,7 +102,6 @@ namespace StellarWatch.Windows
 
             if (Visibility == Visibility.Collapsed)
             {
-                TryFollowWindow();
                 D2CharacterTracker.Update();
                 this.ElementFadeIn();
                 timer.Interval = delta;
@@ -144,7 +140,7 @@ namespace StellarWatch.Windows
 
         public bool TryFollowWindow()
         {
-            if (GetWindowRect(cachedProcess.MainWindowHandle, out var rect))
+            if (cachedProcess != null && !cachedProcess.HasExited && cachedProcess.MainWindowHandle != IntPtr.Zero && GetWindowRect(cachedProcess.MainWindowHandle, out var rect))
             {
                 //TODO: 4k issue
 
@@ -152,8 +148,9 @@ namespace StellarWatch.Windows
                 double w_base = 2560d;
                 var ratio_base = w_base / h_base;
 
-                double win_h = rect.Bottom - rect.Top;
-                double win_w = rect.Right - rect.Left;
+                var dpi = VisualTreeHelper.GetDpi(this);
+                double win_h = (rect.Bottom - rect.Top) / dpi.DpiScaleY;
+                double win_w = (rect.Right - rect.Left) / dpi.DpiScaleX;
                 var ratio = win_w / win_h;
                 
                 double x_multiplier = win_w / w_base;
@@ -166,16 +163,18 @@ namespace StellarWatch.Windows
                 if (ratio > ratio_base) xoffset += (win_w - win_h * ratio_base) / 2;
                 if (ratio < ratio_base) yoffset += (win_h - win_w / ratio_base) / 2;
                 
+                var scalePercent = 1d + (Math.Clamp(Config.Instance.Settings.Overlay_ScalePercent, 1, 100) - 1) * 0.01d;
+
                 // 345 200
-                Width = (win_w - xoffset * 2) / 4;
-                Height = (win_h - yoffset * 2) / 4;
+                Width = ((win_w - xoffset * 2) / 4) * scalePercent;
+                Height = ((win_h - yoffset * 2) / 4) * scalePercent;
                 //Logger.Debug($"{win_w}/{win_h} -> {Width}:{Height}, xoff-{xoffset}, yoff-{yoffset}");
 
-                Left = rect.Left + xoffset + 118 * (win_w - xoffset * 2) / w_base + Config.Instance.Settings.Overlay_LeftOffset;
-                Top = rect.Top + yoffset + ((win_h - yoffset * 2) * 3 / 4) - Config.Instance.Settings.Overlay_BottomOffset;
+                Left = rect.Left / dpi.DpiScaleX + xoffset + 118 * (win_w - xoffset * 2) / w_base * scalePercent + Config.Instance.Settings.Overlay_LeftOffset;
+                Top = rect.Top / dpi.DpiScaleY + yoffset + ((win_h - yoffset * 2) * 3 / 4) - Config.Instance.Settings.Overlay_BottomOffset;
 
-                Scale.ScaleX = (win_w - xoffset * 2) / w_base;
-                Scale.ScaleY = (win_h - yoffset * 2) / h_base;
+                Scale.ScaleX = ((win_w - xoffset * 2) / w_base) * scalePercent;
+                Scale.ScaleY = ((win_h - yoffset * 2) / h_base) * scalePercent;
 
                 //Left = 0;
                 //Top = 0;

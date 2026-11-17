@@ -30,10 +30,10 @@ namespace StellarWatch.Models
         public bool Overlay_StartOnLaunch { get; set; } = true; // Run overlay with app start
         public bool Overlay_ShowTime { get; set; } = false; // Show current time in overlay
         public bool Overlay_ShowTimer { get; set; } = true; // Show instance timer in overlay
-        public bool Overlay_DisableOnInactivity { get; set; } = true; // Hide overlay on inactivity
         public bool Overlay_DisplayOnlyTogglable { get; set; } = false; // Hide untoggleable modules in overlay
         public int Overlay_LeftOffset { get; set; } = 0; // Overlay x-offset
         public int Overlay_BottomOffset { get; set; } = 0; // Overlay y-offset
+        public int Overlay_ScalePercent { get; set; } = 1; // Overlay size scale in percent
 
         public bool Window_DisplayClock { get; set; } = true; // Display current time
         public bool Window_DisplaySpeed { get; set; } = true; // Display connections info
