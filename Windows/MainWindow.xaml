@@ -207,7 +207,7 @@
 
                             <!--ENABLED-->
                             <Grid x:Name="ModuleCheckboxGrid">
-                                <Label Content="Enabled" HorizontalAlignment="Left"/>
+                                <Label Content="启动" HorizontalAlignment="Left"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <controls:WindowControlButton Scale="1.0" MaxScale="1.0" Height="16" Width="16" Margin="6,0"
                                         PathData="{StaticResource QuestionMark}"
@@ -312,12 +312,12 @@
                                 </Grid>
 
                                 <Grid Margin="0,3,0,3" ToolTip="Allows to reinitiate connection with players on desync&#x0a;Experimental and not error-code proof">
-                                    <Label Content="Auto-resync" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <Label Content="自动同步" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="PvpResyncCB" Click="PvpResyncCBClick" Margin="6,0,0,0"/>
                                 </Grid>
                                 
                                 <Grid ToolTip="Injects back dropped packets">
-                                    <Label Content="Buffering" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <Label Content="自动缓存" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="PvpBufferCB" Click="PvpBufferCBClick" Margin="6,0,0,0"/>
                                 </Grid>
                             </StackPanel>
@@ -353,12 +353,12 @@
                                 </Grid>
 
                                 <Grid Margin="0,0,0,3" ToolTip="Allows to reinitiate connection with the server on desync&#x0a;Prevents most error-code cases">
-                                    <Label Content="Auto-resync" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <Label Content="自动同步" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="PveResyncCB" Click="PveResyncCBClick" Margin="6,0,0,0"/>
                                 </Grid>
 
                                 <Grid Margin="0,0,0,3" ToolTip="Injects back dropped packets">
-                                    <Label Content="Buffering" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <Label Content="自动缓存" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="PveBufferCB" Click="PveBufferCBClick" Margin="6,0,0,0"/>
                                 </Grid>
                             </StackPanel>

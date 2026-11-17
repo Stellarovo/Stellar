@@ -77,25 +77,25 @@
                     <!-- MAIN WINDOW SETTINGS -->
                     <Grid>
                         <controls:Checkbox x:Name="MAIN_Clock" Click="MAIN_Clock_Click"/>
-                        <Label Content="Display current time"/>
+                        <Label Content="显示当前时间"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="MAIN_Speed" Click="MAIN_Speed_Click"/>
-                        <Label Content="Display connections info"/>
+                        <Label Content="显示端口流量"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="KeybindsSuppress" Click="KeysSuppress_Click"/>
-                        <Label Content="Disable keybinds on alt-tab"/>
+                        <Label Content="禁用alt-tab"/>
                     </Grid>
 
                     <Grid Height="28">
-                        <Label Content="Timer disappear time"/>
+                        <Label Content="计时延迟"/>
                         <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
                             <TextBox x:Name="MAIN_DecaySecs" MaxLength="2" MaxLines="1"
                                      TextChanged="MAIN_ModuleDecayTime_TextChanged"/>
-                            <Label Content="sec" FontFamily="{StaticResource Kantumruy}" Padding="6,1,6,0"/>
+                            <Label Content="秒" FontFamily="{StaticResource Kantumruy}" Padding="6,1,6,0"/>
                         </StackPanel>
                     </Grid>
 
@@ -118,11 +118,11 @@
                                              Click="FindButton_Click"/>
                         </StackPanel>
 
-                        <Label Content="API tracker"/>
+                        <Label Content="Bungie ID"/>
                     </Grid>
 
                     <Grid Height="28">
-                        <Label Content="Overlay x-offset"/>
+                        <Label Content="水平位置调整"/>
                         <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
                             <TextBox x:Name="OverlayX" MaxLength="4" MaxLines="1"
                                      TextChanged="OverlayX_TextChanged"/>
@@ -131,7 +131,7 @@
                     </Grid>
 
                     <Grid Height="28">
-                        <Label Content="Overlay y-offset"/>
+                        <Label Content="垂直位置调整"/>
                         <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" HorizontalAlignment="Right">
                             <TextBox x:Name="OverlayY" MaxLength="4" MaxLines="1"
                                      TextChanged="OverlayY_TextChanged"/>
@@ -141,22 +141,22 @@
 
                     <Grid>
                         <controls:Checkbox x:Name="OverlayStartup" Click="OverlayStartup_Click"/>
-                        <Label Content="Run overlay with app start"/>
+                        <Label Content="自动显示覆盖层"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="OverlayActive" Click="OverlayActive_Click"/>
-                        <Label Content="Hide overlay on inactivity"/>
+                        <Label Content="不操作时隐藏覆盖层"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="ShowTime" Click="OverlayTime_Click"/>
-                        <Label Content="Show current time in overlay"/>
+                        <Label Content="覆盖层显示当前时间"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="ShowTimer" Click="OverlayTimer_Click"/>
-                        <Label Content="Show instance timer in overlay"/>
+                        <Label Content="覆盖层显示实例计时器"/>
                     </Grid>
 
                     <Grid>
@@ -165,17 +165,17 @@
                             <ColumnDefinition Width="43*"/>
                         </Grid.ColumnDefinitions>
                         <controls:Checkbox x:Name="ShowAllTimers" Click="OverlayTogglable_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="152,4,0,4"/>
-                        <Label Content="Show all modules in overlay" Grid.ColumnSpan="2" Margin="-6,0,-6,0"/>
+                        <Label Content="覆盖层显示所有模块" Grid.ColumnSpan="2" Margin="-6,0,-6,0"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="CountRaids" Click="CountRaids_Click"/>
-                        <Label Content="Count complete raids"/>
+                        <Label Content="统计完成的突袭"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="CountDungeons" Click="CountDungeons_Click"/>
-                        <Label Content="Count complete dungeons"/>
+                        <Label Content="统计完成的地牢"/>
                     </Grid>
 
 
@@ -186,12 +186,12 @@
                     <!-- AHK SETTINGS -->
                     <Grid>
                         <controls:Checkbox x:Name="AHK_Start" Click="AHK_Click"/>
-                        <Label Content="Run last ahks with app start"/>
+                        <Label Content="自动运行上一次选择的 AHK 脚本"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="AHK_Close" Click="AHK_Click"/>
-                        <Label Content="Close ahks with app exit"/>
+                        <Label Content="结束时关闭所有 AHK 脚本"/>
                     </Grid>
 
 
@@ -202,12 +202,12 @@
                     <!-- LOGGING SETTINGS -->
                     <Grid>
                         <controls:Checkbox x:Name="KB_Log" Click="KB_Log_Click"/>
-                        <Label Content="Log key presses"/>
+                        <Label Content="记录按键"/>
                     </Grid>
 
                     <Grid>
                         <controls:Checkbox x:Name="DB_Save" Click="DB_Save_Click"/>
-                        <Label Content="Save packets to database"/>
+                        <Label Content="将数据保存到数据库"/>
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
