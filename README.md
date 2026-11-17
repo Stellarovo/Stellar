@@ -102,7 +102,7 @@ UI 通过 WPF XAML 声明布局，再由 code-behind 处理按钮、窗口和设
 | 服务设置 | `Windows\ServiceWindow.xaml`、`ServiceWindow.xaml.cs` | 编辑覆盖层、追踪、记录、显示和脚本等设置。 |
 | 日志浏览器 | `Windows\LogsViewer.xaml`、`LogsViewer.xaml.cs` | 查询并查看本地日志和数据库记录。 |
 | 脚本管理器 | `Windows\AhkManagerWindow.xaml`、`AhkManagerWindow.xaml.cs` | 浏览和管理脚本目录中的 AutoHotkey 文件。 |
-| 启动进度窗口 | `Windows\StartupProgressBar.xaml`、`StartupProgressBar.xaml.cs` | 应用启动期间的进度/状态显示。 |
+| 启动进度窗口 | `Windows\StartupProgressBar.xaml`、`StartupProgressBar.xaml.cs` | 应用启动期间的状态显示；启动时直接执行初始化，不显示登录/注册面板或右侧关闭按钮。 |
 
 可复用控件集中在 `Windows\Controls\`，例如自定义按钮、复选框、连接信息面板、模块计时器和窗口控制按钮。`Windows\Assets\ControlTemplates.xaml`、`Icons.xaml` 提供模板和图标资源。
 
@@ -125,7 +125,7 @@ UI 通过 WPF XAML 声明布局，再由 code-behind 处理按钮、窗口和设
 
 `LogsViewer` 维护日志和连接信息的可观察集合。加载时初始化筛选控件、默认时间范围及日志类别；刷新逻辑根据时间、记录类型、连接选择和长度条件分批查询 SQLite，然后更新界面集合。具体图表/统计展示以 XAML 中实际启用的控件为准。
 
-`ServiceWindow` 在界面加载后把 `Config.Instance.Settings` 的值填入控件；设置变更通常立即写配置。偏移输入会要求整数并尝试让已打开的覆盖层重新定位。Bungie 名称输入经过格式检查，再交给 `D2CharacterTracker` 查询；成功后写入配置。
+`ServiceWindow` 在界面加载后把 `Config.Instance.Settings` 的值填入控件；设置变更通常立即写配置。偏移输入会要求整数并尝试让已打开的覆盖层重新定位。覆盖层大小接受 0–100 的百分比，并在显示时按该范围限制缩放值。Bungie 名称输入经过格式检查，再交给 `D2CharacterTracker` 查询；成功后写入配置。
 
 ## 6. 配置说明
 
@@ -135,7 +135,7 @@ UI 通过 WPF XAML 声明布局，再由 code-behind 处理按钮、窗口和设
 
 - **主界面和音量**：当前模块、音量等。
 - **模块设置**：模块启用状态、键位组合及各模块自有选项。
-- **覆盖层**：启动时是否启用、是否显示时钟/计时器、失去活动状态时的行为、显示筛选及 X/Y 偏移。
+- **覆盖层**：启动时是否启用、是否显示时钟/计时器、失去活动状态时的行为、显示筛选、大小百分比（0–100）及 X/Y 偏移。
 - **主窗口显示**：时钟、连接速度信息及计时显示时长。
 - **追踪选项**：名称字段及活动计数相关选项。
 - **记录选项**：是否保存数据记录、是否记录按键事件。
@@ -158,6 +158,7 @@ UI 通过 WPF XAML 声明布局，再由 code-behind 处理按钮、窗口和设
 | 覆盖层 | `Overlay_ShowTime`、`Overlay_ShowTimer` | 控制覆盖层显示当前时间或活动计时。 |
 | 覆盖层 | `Overlay_DisableOnInactivity` | 覆盖层基于活动状态隐藏/淡出的选项。 |
 | 覆盖层 | `Overlay_DisplayOnlyTogglable` | 控制覆盖层是否仅显示可切换模块。 |
+| 覆盖层 | `Overlay_ScalePercent` | 覆盖层大小百分比，设置范围为 0–100。 |
 | 覆盖层 | `Overlay_LeftOffset`、`Overlay_BottomOffset` | 覆盖层位置偏移量（整数）。 |
 | 主窗口 | `Window_DisplayClock`、`Window_DisplaySpeed` | 控制主窗口是否显示时钟和连接信息面板。 |
 | 主窗口 | `Window_TimerDecaySeconds` | 已停用的活动模块计时条目保留/淡出时间。 |
