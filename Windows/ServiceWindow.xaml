@@ -215,7 +215,7 @@
         </Border>
 
         <Grid VerticalAlignment="Bottom">
-            <Label x:Name="VersionString" HorizontalAlignment="Right" Margin="0,-2.5,0,-10" Foreground="{StaticResource InactiveColor}" Content="https://limiter.report" FontSize="14"/>
+            <Label x:Name="VersionString" HorizontalAlignment="Right" Margin="0,-2.5,0,-10" Foreground="{StaticResource InactiveColor}" Content="Stellar 1.0" FontSize="14"/>
             <Label x:Name="TimeString" HorizontalAlignment="Left" Margin="0,-2.5,0,-10" Foreground="{StaticResource InactiveColor}" Content="" FontSize="14"/>
         </Grid>
 

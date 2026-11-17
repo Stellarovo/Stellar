@@ -19,7 +19,7 @@ namespace StellarWatch.Utility
     public static class Updater
     {
         public const int Version = 35;
-        public const string VersionString = "https://limiter.report";
+        public const string VersionString = "Stellar 1.0";
         private const string ManifestUrl = "";
         private static Manifest manifest;
 

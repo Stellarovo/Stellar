@@ -104,13 +104,51 @@ namespace StellarWatch
             }
         }
 
+        private LogsViewer? _logsWindow;
+        private bool _logsWindowOpening;
+        private bool _closeLogsWhenOpened;
+
         private void LogButtonClick(object sender, RoutedEventArgs e)
         {
+            if (_logsWindow != null)
+            {
+                var log = _logsWindow;
+                log.Dispatcher.BeginInvoke(new Action(log.Close));
+                return;
+            }
+
+            if (_logsWindowOpening)
+            {
+                _closeLogsWhenOpened = true;
+                return;
+            }
+
+            _logsWindowOpening = true;
             Thread thread = new Thread(() =>
             {
                 var log = new LogsViewer() { WindowStartupLocation = WindowStartupLocation.CenterScreen };
+                log.Closed += (sender2, e2) =>
+                {
+                    this.Dispatcher.BeginInvoke(() =>
+                    {
+                        if (ReferenceEquals(_logsWindow, log))
+                            _logsWindow = null;
+                    });
+                    log.Dispatcher.InvokeShutdown();
+                };
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    _logsWindow = log;
+                    _logsWindowOpening = false;
+                    if (_closeLogsWhenOpened)
+                    {
+                        _closeLogsWhenOpened = false;
+                        log.Dispatcher.BeginInvoke(new Action(log.Close));
+                    }
+                });
+
                 log.Show();
-                log.Closed += (sender2, e2) => log.Dispatcher.InvokeShutdown();
                 Dispatcher.Run();
             });
 
@@ -182,22 +220,50 @@ namespace StellarWatch
             }
         }
 
+        private ServiceWindow? _serviceWindow;
+
         private void ServiceWindowButtonClick(object sender, RoutedEventArgs e)
         {
+            if (_serviceWindow != null)
+            {
+                _serviceWindow.Close();
+                return;
+            }
+
             var app = new ServiceWindow()
             {
                 Left = this.Left + this.Width + 4,
                 Top = this.Top
             };
+            _serviceWindow = app;
+            app.Closed += (sender2, e2) =>
+            {
+                if (ReferenceEquals(_serviceWindow, app))
+                    _serviceWindow = null;
+            };
             app.Show();
         }
 
+        private AhkManagerWindow? _ahkWindow;
+
         private void AhkClick(object sender, RoutedEventArgs e)
         {
+            if (_ahkWindow != null)
+            {
+                _ahkWindow.Close();
+                return;
+            }
+
             var app = new AhkManagerWindow()
             {
                 Left = this.Left + this.Width + 4,
                 Top = this.Top
+            };
+            _ahkWindow = app;
+            app.Closed += (sender2, e2) =>
+            {
+                if (ReferenceEquals(_ahkWindow, app))
+                    _ahkWindow = null;
             };
             app.Show();
         }

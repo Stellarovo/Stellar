@@ -110,7 +110,7 @@ namespace StellarWatch
                     else
                     {
                         LoginButton.IsEnabled = true;
-                        TaskDescription.Content = "https://limiter.report";
+                        TaskDescription.Content = "Welcome to Stellar";
                     }
                 });
             };
