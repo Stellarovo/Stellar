@@ -220,12 +220,12 @@
                             <!--API SETTINGS-->
                             <StackPanel x:Name="API_Panel" Visibility="Collapsed">
                                 <Grid ToolTip="Error code prevention">
-                                    <Label Content="Auto disable" HorizontalAlignment="Left"/>
+                                    <Label Content="自动关闭" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="API_Disable" Click="API_DisableClick"/>
                                 </Grid>
 
                                 <Grid ToolTip="Injects back dropped packets">
-                                    <Label Content="Buffering" HorizontalAlignment="Left"/>
+                                    <Label Content="自动缓存" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="API_Buffer" Click="API_BufferClick"/>
                                 </Grid>
                             </StackPanel>
@@ -284,7 +284,7 @@
                             <!--PVE SETTINGS-->
                             <StackPanel x:Name="INSTANCE_Panel" Visibility="Collapsed">
                                 <Grid Margin="0,0,0,3" ToolTip="Injects back dropped packets">
-                                    <Label Content="Buffering" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <Label Content="自动缓存" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                     <controls:Checkbox x:Name="InstBufferCB" Click="InstBufferCBClick" Margin="6,0,0,0"/>
                                 </Grid>
                             </StackPanel>
