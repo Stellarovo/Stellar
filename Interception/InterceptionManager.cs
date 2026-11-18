@@ -48,7 +48,11 @@ namespace StellarWatch.Interception
             var enabledNames = Config.Instance.Modules.Where(x => x.Value.Enabled).Select(x => x.Key);
             foreach (var disable in Modules.Where(x => x.IsEnabled && !enabledNames.Contains(x.Name)).ToArray())
                 disable.StopListening();
-
+            foreach (var module in Modules)
+             {
+               if (!module.IsEnabled)
+                module.StartListening();
+             }
             foreach (var enable in Modules.Where(x => enabledNames.Contains(x.Name)).ToArray())
                 enable.StartListening();
 
