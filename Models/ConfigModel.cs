@@ -33,11 +33,11 @@ namespace StellarWatch.Models
         public bool Overlay_DisplayOnlyTogglable { get; set; } = false; // Hide untoggleable modules in overlay
         public int Overlay_LeftOffset { get; set; } = 0; // Overlay x-offset
         public int Overlay_BottomOffset { get; set; } = 0; // Overlay y-offset
-        public int Overlay_ScalePercent { get; set; } = 1; // Overlay size scale in percent
+        public int Overlay_ScalePercent { get; set; } = 0; // Overlay size scale in percent
 
         public bool Window_DisplayClock { get; set; } = true; // Display current time
         public bool Window_DisplaySpeed { get; set; } = true; // Display connections info
-        public int Window_TimerDecaySeconds { get; set; } = 10; // Timer disappear time
+        public int Window_TimerDecaySeconds { get; set; } = 2; // Timer disappear time
 
         public bool DB_SavePackets { get; set; } = true; // Save packets to database
         public bool DB_KeyPresses { get; set; } = false; // Log key presses
@@ -48,7 +48,7 @@ namespace StellarWatch.Models
 
     public class ModuleSettingsBase
     {
-        public bool Enabled = false;
+        public bool Enabled = true;
         public List<Keycode> Keybind = new List<Keycode>();
         public Dictionary<string, object> Settings = new Dictionary<string, object>();
 
