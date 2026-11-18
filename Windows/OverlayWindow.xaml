@@ -75,7 +75,7 @@
                 <StackPanel x:Name="DisplayLine" VerticalAlignment="Top" HorizontalAlignment="Left" 
                             Orientation="Horizontal">
 
-                    <StackPanel x:Name="Modules" Height="42" MinWidth="255" MaxWidth="255"
+                    <StackPanel x:Name="Modules" Height="42" MinWidth="255" MaxWidth="375"
                                 Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel.Resources>
                             <Style TargetType="controls:EnabledModuleTimer">
