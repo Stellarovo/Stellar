@@ -80,6 +80,8 @@ namespace StellarWatch.Windows
             timer.Interval = delta;
             timer.Start();
             Closed += (s, e) => timer.Stop();
+            if (!CheckGameFocus(true))
+            Visibility = Visibility.Collapsed;
         }
 
         private async void Tick(object? sender, EventArgs e)

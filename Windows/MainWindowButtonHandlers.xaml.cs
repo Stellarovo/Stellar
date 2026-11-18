@@ -278,6 +278,10 @@ namespace StellarWatch
         {
             if (overlay == null)
             {
+                if (!OverlayWindow.CheckGameFocus(true))
+                {
+                    return;
+                }
                 overlay = new OverlayWindow();
                 OverlayWindow.CheckGameFocus(true);
                 overlay.TryFollowWindow();
