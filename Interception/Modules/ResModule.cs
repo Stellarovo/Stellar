@@ -15,9 +15,16 @@ namespace StellarWatch.Interception.Modules
         public ResModule() : base("Revive", false, InterceptionManager.GetProvider("Players"))
         {
             Description =
-@"doesnt use revive token in raids + contest activities
-bind with interaction key
-disables itself";
+@"一币多拉
+
+勾上后可在 突袭 竞速 首日等活动
+无限消耗玩家右下角的单个复活币
+
+勾上后等待3秒 可使用单币拉所有人
+不生效就是没等待 10秒后自动解勾
+*宗师 割喉壮举无法生效
+
+端口[27k]";
             provider = InterceptionManager.GetProvider("Players");
         }
 

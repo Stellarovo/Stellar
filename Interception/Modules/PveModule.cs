@@ -22,9 +22,15 @@ namespace StellarWatch.Interception.Modules
         {
             Icon = System.Windows.Application.Current.FindResource("ArcIcon") as Geometry;
             Description = 
-@"block game world updates [3074]
-prevent asset loading
-gos motes!";
+@"暂停游戏世界 停止加载所有资源
+
+可让门直接消失 或 BUFF多塞 卡旗
+3074 DL可以卡旗 勾旗 多塞BUFF
+
+3074 UL可以卡框架 VOG尾王单打神域 
+别忘了去花园勾30个荧光!
+
+端口 [3074]";
 
             xbox = InterceptionManager.GetProvider("Xbox");
 

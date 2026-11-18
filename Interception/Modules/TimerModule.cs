@@ -12,7 +12,7 @@ namespace StellarWatch.Interception.Modules
         public TimerModule() : base("Timer", true, null)
         {
             Icon = System.Windows.Application.Current.FindResource("Clock") as Geometry;
-            Description = "just a timer";
+            Description = "计时器 不使用任何端口❤";
         }
 
         public override void Toggle()

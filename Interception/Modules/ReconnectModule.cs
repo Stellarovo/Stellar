@@ -27,10 +27,17 @@ namespace StellarWatch.Interception.Modules
             IsActivated = false;
             Icon = System.Windows.Application.Current.FindResource("ReconnectIcon") as Geometry ?? Icon;
             Description =
-@"instant disconnect/reconnect [30k]
-change public instances
-reload world state
-pull yourself to ft leader";
+@"重新连接游戏
+
+重置世界资源 或者保住自己的无暇标
+
+若卡框架后导致不能走机制或怪不打你
+则可使用该功能重置自己的假身状态
+
+一般用于将自己传送至队长附近加载点
+该功能可配合 30k 使用(勾10秒解)
+
+端口[30k]";
 
             _30k = PacketProviders.First();
         }

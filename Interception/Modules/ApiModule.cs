@@ -22,10 +22,18 @@ namespace StellarWatch.Interception.Modules
         {
             Icon = System.Windows.Application.Current.FindResource("ApiblockIcon") as Geometry;
             Description = 
-@"blocks api updates [7.5k]
-infinite rally
-lobby crash (patched???)
-predamage";
+@"老牌卡框架端口 常用于卡象与洛
+
+配合3074卡旗 勾住2秒后可以无限摸旗
+主要功能是提前给BOSS造成伤害
+
+拿洛勾住切二象性 并按住鼠标左右键
+瞄头解勾 成功开枪则可提前造成伤害
+同时也可以在SE尾王 狙切狙 打扣子
+
+*可以用象与洛杀队友
+
+端口 [7500]";
 
             Disable = Config.GetNamed(Name).GetSettings<bool>("SelfDisable");
             Buffer = Config.GetNamed(Name).GetSettings<bool>("Buffer");

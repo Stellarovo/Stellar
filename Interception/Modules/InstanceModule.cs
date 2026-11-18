@@ -14,7 +14,13 @@ namespace StellarWatch.Interception.Modules
         public InstanceModule() : base("З0K", true, InterceptionManager.GetProvider("30000"))
         {
             Icon = System.Windows.Application.Current.FindResource("Traveller") as Geometry;
-            Description = @"blocks inbound updates";
+            Description = @"保持重新连接状态 阻止加入友军
+
+在加入友军前勾住30K即可呆在外场
+该功能一般配合 重新连接 使用
+可使玩家进入最新的开门加载点
+
+端口 [30k]";
             provider = PacketProviders.First();
             Buffer = Config.GetNamed(Name).GetSettings<bool>("Buffer");
         }

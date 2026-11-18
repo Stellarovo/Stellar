@@ -15,8 +15,12 @@ namespace StellarWatch.Interception.Modules
         {
             Icon = System.Windows.Application.Current.FindResource("PauseIcon") as Geometry;
             Description =
-@"uses windows api
-pauses game process";
+@"冻结游戏进程
+
+使用Windows系统组件 暂停游戏
+该功能大多用于阻止加入友军
+在加入友军剩余2秒时勾住10秒
+该功能同样可用于KF躲避Oryx召唤暗影";
         }
 
         public override void Toggle()

@@ -15,7 +15,7 @@ namespace StellarWatch.Interception.Modules
         public SoloModule() : base("Solo", true, InterceptionManager.GetProvider("Players"))
         {
             Icon = System.Windows.Application.Current.FindResource("LonelyIcon") as Geometry;
-            Description = "blocks matchmaking";
+            Description = "使用端口[443]阻止匹配队友";
         }
 
         public override void Toggle()

@@ -18,9 +18,23 @@ namespace StellarWatch.Interception.Modules
             players = PacketProviders.First();
             Icon = System.Windows.Application.Current.FindResource("MeleeIcon") as Geometry;
             Description = 
-@"block players updates [27k]
-teamkill
-prevent fireteam joining";
+@"阻止玩家状态更新 友军击杀
+阻止别的玩家加入你的队伍
+
+手持一把霰弹枪 打开背包
+鼠标放在另一把霰弹枪上
+勾UL DL 装备另一把霰弹枪
+喷队友两枪 解勾UL DL
+恭喜你成功击杀队友!
+*该方式比7500成功率更高
+
+如果你是房主在轨道勾
+可使所有玩家无法进入地图且断开连接
+
+*去掉自动同步与自动缓冲
+*图内勾UL DL 35秒后可使所有人掉线
+
+端口 [27k]";
 
             KeyListener.KeysPressed += OutboundHandler;
 
